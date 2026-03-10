@@ -1,0 +1,88 @@
+.page {
+  margin: 16px auto;
+  max-width: 1100px;
+  padding: 0 12px;
+}
+
+.loading {
+  padding: 24px 12px;
+  opacity: 0.8;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.avatar {
+  transform: scale(1.2);
+}
+
+.profile__name {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.profile__headline {
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+.profile__meta {
+  margin-top: 4px;
+  opacity: 0.75;
+}
+
+.profile__contact {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-row a {
+  color: inherit;
+}
+
+.about {
+  margin: 0 0 8px;
+}
+
+.dob {
+  opacity: 0.75;
+}
+
+.list {
+  display: grid;
+  gap: 16px;
+}
+
+.item__title {
+  font-weight: 600;
+}
+
+.item__subtitle {
+  opacity: 0.85;
+}
+
+.item__meta {
+  opacity: 0.7;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.item__desc {
+  margin-top: 6px;
+}
+
+.empty {
+  opacity: 0.7;
+}

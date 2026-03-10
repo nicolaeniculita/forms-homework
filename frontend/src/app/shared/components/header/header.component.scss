@@ -1,0 +1,24 @@
+:host {
+  display: block;
+}
+
+.header {
+  height: var(--header-height);
+  padding: 0 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand__name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.spacer {
+  flex: 1;
+}

@@ -1,0 +1,101 @@
+<div class="page">
+  @if (user; as u) {
+    <app-profile-section [title]="'Profile'" [subtitle]="profileSubtitle">
+      <div class="profile">
+        <app-avatar
+          [firstName]="u.firstName"
+          [lastName]="u.lastName"
+          class="avatar">
+        </app-avatar>
+
+        <div class="profile__main">
+          <div class="profile__name">{{ fullName }}</div>
+          <div class="profile__headline">{{ u.headline }}</div>
+          <div class="profile__meta">{{ u.location }}</div>
+        </div>
+
+        <div class="profile__contact">
+          <div class="contact-row">
+            <mat-icon aria-hidden="true">mail</mat-icon>
+            <a [href]="'mailto:' + u.email">{{ u.email }}</a>
+          </div>
+
+          <div class="contact-row">
+            <mat-icon aria-hidden="true">call</mat-icon>
+            <a [href]="'tel:' + u.phone">{{ u.phone }}</a>
+          </div>
+
+          <div class="contact-row">
+            <mat-icon aria-hidden="true">language</mat-icon>
+            <a [href]="u.website" target="_blank" rel="noopener">
+              {{ u.website }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </app-profile-section>
+
+    <app-profile-section [title]="'About'" [subtitle]="'Personal details'">
+      <p class="about">{{ u.about }}</p>
+      <div class="dob">Born: {{ u.dateOfBirth | date: 'longDate' }}</div>
+    </app-profile-section>
+
+    <app-profile-section [title]="'Experience'" [subtitle]="'Where they worked'">
+      <div class="list">
+        @for (exp of u.experience; track trackExperience($index, exp)) {
+          <div class="item">
+            <div class="item__title">{{ exp.title }}</div>
+            <div class="item__subtitle">{{ exp.company }} · {{ exp.location }}</div>
+
+            <div class="item__meta">
+              {{ exp.startDate | date: 'MMM y' }} —
+              @if (exp.endDate) {
+                {{ exp.endDate | date: 'MMM y' }}
+              } @else {
+                Present
+              }
+            </div>
+
+            <div class="item__desc">{{ exp.description }}</div>
+          </div>
+        } @empty {
+          <div class="empty">No experience entries.</div>
+        }
+      </div>
+    </app-profile-section>
+
+    <app-profile-section [title]="'Education'" [subtitle]="'Where they studied'">
+      <div class="list">
+        @for (edu of u.education; track trackEducation($index, edu)) {
+          <div class="item">
+            <div class="item__title">{{ edu.institution }}</div>
+            <div class="item__subtitle">{{ edu.degree }} · {{ edu.fieldOfStudy }}</div>
+
+            <div class="item__meta">
+              {{ edu.startYear }} —
+              @if (edu.endYear) {
+                {{ edu.endYear }}
+              } @else {
+                Present
+              }
+            </div>
+          </div>
+        } @empty {
+          <div class="empty">No education entries.</div>
+        }
+      </div>
+    </app-profile-section>
+
+    <app-profile-section [title]="'Skills'" [subtitle]="'What they are good at'">
+      <mat-chip-set aria-label="skills">
+        @for (skill of u.skills; track trackSkill($index, skill)) {
+          <mat-chip>{{ skill }}</mat-chip>
+        } @empty {
+          <mat-chip disabled>No skills listed</mat-chip>
+        }
+      </mat-chip-set>
+    </app-profile-section>
+  } @else {
+    <div class="loading">Loading profile…</div>
+  }
+</div>

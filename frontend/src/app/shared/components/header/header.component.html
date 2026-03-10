@@ -1,0 +1,18 @@
+<mat-toolbar class="header" color="primary">
+  <a class="brand" routerLink="/network" aria-label="Go to network">
+    <span class="brand__name">LinkedOut</span>
+  </a>
+
+  <span class="spacer"></span>
+
+  <button mat-icon-button aria-label="Open menu" [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/settings">
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
