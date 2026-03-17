@@ -1,24 +1,57 @@
-:host {
-  display: block;
-}
-
 .header {
-  height: var(--header-height);
-  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
 }
 
 .brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 10px;
   text-decoration: none;
   color: inherit;
 }
 
-.brand__name {
-  font-size: 18px;
+.brand-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background-color: #63676b;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  text-transform: lowercase;
+}
+
+.brand-text {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .spacer {
   flex: 1;
+}
+
+button[mat-icon-button] {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button[mat-icon-button] .mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }

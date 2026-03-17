@@ -11,6 +11,8 @@ import { Experience } from '../../shared/models/experience.model';
 import { User } from '../../shared/models/user.model';
 import { UsersService } from '../../shared/services/users.service';
 import { ProfileSectionComponent } from '../profile-section/profile-section.component';
+import { RandomColorDirective } from '../../shared/directives/random-color.directive';
+import { IfCurrentUserDirective } from '../../shared/directives/if-current-user.directive';
 
 @Component({
   selector: 'app-user-profile',
@@ -22,6 +24,8 @@ import { ProfileSectionComponent } from '../profile-section/profile-section.comp
     MatIconModule,
     AvatarComponent,
     ProfileSectionComponent,
+    RandomColorDirective,
+    IfCurrentUserDirective,
   ],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss',

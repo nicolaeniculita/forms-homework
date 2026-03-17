@@ -16,3 +16,11 @@
   line-height: 1;
   flex-shrink: 0;
 }
+
+.avatar--lg {
+  width: 72px;
+  height: 72px;
+  font-size: 28px;
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}

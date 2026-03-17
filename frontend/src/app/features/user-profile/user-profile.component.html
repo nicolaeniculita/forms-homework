@@ -1,39 +1,53 @@
 <div class="page">
   @if (user; as u) {
-    <app-profile-section [title]="'Profile'" [subtitle]="profileSubtitle">
-      <div class="profile">
-        <app-avatar
-          [firstName]="u.firstName"
-          [lastName]="u.lastName"
-          class="avatar">
-        </app-avatar>
+    <ng-container *appIfCurrentUser="u.id">
+      <app-profile-section [title]="'Profile'" [subtitle]="profileSubtitle">
+        <div class="profile-card">
+          <div class="profile-card__cover"></div>
 
-        <div class="profile__main">
-          <div class="profile__name">{{ fullName }}</div>
-          <div class="profile__headline">{{ u.headline }}</div>
-          <div class="profile__meta">{{ u.location }}</div>
+          <div class="profile-card__body">
+            <div class="profile-card__top">
+              <app-avatar
+                [firstName]="u.firstName"
+                [lastName]="u.lastName"
+                size="lg"
+                class="profile-card__avatar"
+              >
+              </app-avatar>
+
+              <div class="profile-card__main">
+                <div class="profile__name">{{ fullName }}</div>
+                <div class="profile__headline">{{ u.headline }}</div>
+
+                <div class="profile__meta profile__meta--location">
+                  <mat-icon aria-hidden="true">location_on</mat-icon>
+                  <span>{{ u.location }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="profile-card__contact">
+              <div class="contact-row">
+                <mat-icon aria-hidden="true">mail</mat-icon>
+                <a [href]="'mailto:' + u.email">{{ u.email }}</a>
+              </div>
+
+              <div class="contact-row">
+                <mat-icon aria-hidden="true">call</mat-icon>
+                <a [href]="'tel:' + u.phone">{{ u.phone }}</a>
+              </div>
+
+              <div class="contact-row">
+                <mat-icon aria-hidden="true">language</mat-icon>
+                <a [href]="u.website" target="_blank" rel="noopener">
+                  {{ u.website }}
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="profile__contact">
-          <div class="contact-row">
-            <mat-icon aria-hidden="true">mail</mat-icon>
-            <a [href]="'mailto:' + u.email">{{ u.email }}</a>
-          </div>
-
-          <div class="contact-row">
-            <mat-icon aria-hidden="true">call</mat-icon>
-            <a [href]="'tel:' + u.phone">{{ u.phone }}</a>
-          </div>
-
-          <div class="contact-row">
-            <mat-icon aria-hidden="true">language</mat-icon>
-            <a [href]="u.website" target="_blank" rel="noopener">
-              {{ u.website }}
-            </a>
-          </div>
-        </div>
-      </div>
-    </app-profile-section>
+      </app-profile-section>
+    </ng-container>
 
     <app-profile-section [title]="'About'" [subtitle]="'Personal details'">
       <p class="about">{{ u.about }}</p>
@@ -89,7 +103,7 @@
     <app-profile-section [title]="'Skills'" [subtitle]="'What they are good at'">
       <mat-chip-set aria-label="skills">
         @for (skill of u.skills; track trackSkill($index, skill)) {
-          <mat-chip>{{ skill }}</mat-chip>
+          <mat-chip appRandomColor>{{ skill }}</mat-chip>
         } @empty {
           <mat-chip disabled>No skills listed</mat-chip>
         }

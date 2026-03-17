@@ -11,6 +11,10 @@ import { MatInputModule } from '@angular/material/input';
 import { UsersService } from '../../shared/services/users.service';
 import { User } from '../../shared/models/user.model';
 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { InfoIconDirective } from '../../shared/directives/info-icon.directive';
+import { SaveButtonDirective } from '../../shared/directives/save-button.directive';
+
 @Component({
   selector: 'app-settings',
   standalone: true,
@@ -22,6 +26,9 @@ import { User } from '../../shared/models/user.model';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatSnackBarModule,
+    InfoIconDirective,
+    SaveButtonDirective,
   ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',

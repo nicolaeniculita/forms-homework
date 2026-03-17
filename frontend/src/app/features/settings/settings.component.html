@@ -114,7 +114,23 @@
         </section>
 
         <div class="form-actions">
-          <button mat-flat-button type="submit" [disabled]="saving">
+          @if (form.invalid || form.pristine) {
+            <button
+              mat-icon-button
+              type="button"
+              appInfoIcon="Please fill in all required fields and make changes before saving."
+              aria-label="Form info"
+            >
+              <mat-icon aria-hidden="true">info</mat-icon>
+            </button>
+          }
+
+          <button
+            mat-flat-button
+            type="submit"
+            [disabled]="saving || form.invalid || form.pristine"
+            appSaveButton="Profile changes saved successfully."
+          >
             <mat-icon aria-hidden="true">save</mat-icon>
             Save
           </button>

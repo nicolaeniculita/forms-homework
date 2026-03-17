@@ -19,9 +19,13 @@
 
       <ng-container matColumnDef="headline">
         <th mat-header-cell *matHeaderCellDef>Headline</th>
-
         <td mat-cell *matCellDef="let user">
-          {{ user.headline }}
+          <div class="headline-cell">
+            <mat-icon class="headline-icon" [appTechIcons]="user.headline" aria-hidden="true">
+            </mat-icon>
+
+            <span>{{ user.headline }}</span>
+          </div>
         </td>
       </ng-container>
 
@@ -47,6 +51,7 @@
         mat-row
         *matRowDef="let row; columns: displayedColumns"
         class="table-row"
+        [appHighlight]="row.headline"
         (click)="openProfile(row)"
       ></tr>
     </table>

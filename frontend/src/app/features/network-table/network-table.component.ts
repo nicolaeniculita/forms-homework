@@ -7,11 +7,21 @@ import { MatCardModule } from '@angular/material/card';
 import { UsersService } from '../../shared/services/users.service';
 import { AvatarComponent } from '../../shared/components/avatar/avatar.component';
 import { User } from '../../shared/models/user.model';
+import { HighlightDirective } from '../../shared/directives/highlight.directive';
+import { MatIconModule } from '@angular/material/icon';
+import { TechIconsDirective } from '../../shared/directives/tech-icons.directive';
 
 @Component({
   selector: 'app-network-table',
   standalone: true,
-  imports: [MatCardModule, MatTableModule, AvatarComponent],
+  imports: [
+    MatCardModule,
+    MatTableModule,
+    AvatarComponent,
+    HighlightDirective,
+    TechIconsDirective,
+    MatIconModule,
+  ],
   templateUrl: './network-table.component.html',
   styleUrl: './network-table.component.scss',
 })
